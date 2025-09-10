@@ -1,0 +1,5 @@
+{
+    "require": {
+        "oat-sa/lib-lti1p3-core": "^7.2"
+    }
+}
