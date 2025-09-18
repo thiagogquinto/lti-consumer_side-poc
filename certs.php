@@ -1,20 +1,16 @@
 <?php
-$publicKeyPath = '/home/thiago/Documentos/SINEPE/lti.pub'; // Caminho da chave pública
+// Resgatar o repositório criado no keys.php
+$keyChainRepository = require_once __DIR__ . '/keys.php';
 
-if (!file_exists($publicKeyPath)) {
-    http_response_code(404);
-    echo json_encode(['error' => 'Chave pública não encontrada']);
-    exit;
-}
+use OAT\Library\Lti1p3Core\Security\Jwks\Exporter\JwksExporter;
+use OAT\Library\Lti1p3Core\Security\Jwks\Server\JwksRequestHandler;
 
-$pem = file_get_contents($publicKeyPath);
-$jwk = (new JWKConverter())->pemToJWK($pem);
+$handler = new JwksRequestHandler(new JwksExporter($keyChainRepository));
 
-$jwk['kty'] = 'RSA';
-$jwk['kid'] = 'lti-key-id';
-$jwk['use'] = 'sig';
-$jwk['alg'] = 'RS256';
-$jwk['e'] = 'AQAB'; // Exponente público padrão
+$response = $handler->handle('myPlatformKeys');
 
-header('Content-Type: application/json');
-echo json_encode(['keys' => [$jwk]]);
+echo $response->getBody();
+
+
+// Fazer o export usando o repositório resgatado
+// $jwksExport = (new JwksExporter($keyChainRepository))->export('myPlatformKeys');

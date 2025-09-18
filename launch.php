@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/regRepo.php';
+require_once __DIR__ . '/registrationRepository.php';
 
 use OAT\Library\Lti1p3Core\Message\Launch\Builder\PlatformOriginatingLaunchBuilder;
 use OAT\Library\Lti1p3Core\Message\LtiMessageInterface;
@@ -34,8 +34,10 @@ $message = $builder->buildPlatformOriginatingLaunch(
     ]
 );
 
+echo $message->toHtmlRedirectForm();
+
 // Exibe os dados coletados da mensagem LTI
-echo "<h2>Dados da mensagem LTI gerada:</h2>";
-echo '<pre>';
-print_r($message);
-echo '</pre>';
+// echo "<h2>Dados da mensagem LTI gerada:</h2>";
+// echo '<pre>';
+// print_r($message);
+// echo '</pre>';

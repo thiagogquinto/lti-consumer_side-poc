@@ -5,7 +5,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 
-
 $registrationRepository = new class implements RegistrationRepositoryInterface {
     private $registrations;
 

@@ -1,9 +1,12 @@
 <?php
 // Endpoint de autenticação OIDC/LTI
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/regRepo.php';
+require_once __DIR__ . '/registrationRepository.php';
 
 use OAT\Library\Lti1p3Core\Security\Oidc\OidcInitiator;
+
+#exibir todo o GET
+var_dump($_GET);
 
 $issuer = $_GET['iss'] ?? null;
 $clientId = $_GET['client_id'] ?? null;
