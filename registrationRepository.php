@@ -10,11 +10,9 @@ $registrationRepository = new class implements RegistrationRepositoryInterface {
 
     public function __construct()
     {
-        // Exemplo de como popular os registros. Idealmente, carregue de um arquivo/config/banco.
-        require_once __DIR__ . '/registration.php'; // $registration deve ser definido neste arquivo
+        require_once __DIR__ . '/registration.php'; 
         $this->registrations = [
             $registration->getIdentifier() => $registration,
-            // Adicione outros registros conforme necessário
         ];
     }
 

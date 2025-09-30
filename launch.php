@@ -34,10 +34,10 @@ $message = $builder->buildPlatformOriginatingLaunch(
     ]
 );
 
-echo $message->toHtmlRedirectForm();
+// echo $message->getUrl();               // url of the launch
+// echo $message->getParameters()->all(); // array of parameters of the launch
 
-// Exibe os dados coletados da mensagem LTI
-// echo "<h2>Dados da mensagem LTI gerada:</h2>";
-// echo '<pre>';
-// print_r($message);
-// echo '</pre>';
+// // Or use those helpers methods to ease the launch interactions
+// echo $message->toUrl();                // url with launch parameters as query parameters
+// echo $message->toHtmlLink('click me'); // HTML link, where href is the output url
+echo $message->toHtmlRedirectForm();   // HTML hidden form, with possibility of auto redirection 
