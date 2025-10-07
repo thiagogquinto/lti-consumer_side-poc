@@ -4,15 +4,16 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
+use \OAT\Library\Lti1p3Core\Registration\Registration;
 
-$registrationRepository = new class implements RegistrationRepositoryInterface {
-    private $registrations;
+class RegistrationRepository implements RegistrationRepositoryInterface {
+    /** @var Registration[] */
+    private array $registrations;
 
-    public function __construct()
+    public function __construct(Registration $initialRegistration)
     {
-        require_once __DIR__ . '/registration.php'; 
         $this->registrations = [
-            $registration->getIdentifier() => $registration,
+            $initialRegistration->getIdentifier() => $initialRegistration,
         ];
     }
 

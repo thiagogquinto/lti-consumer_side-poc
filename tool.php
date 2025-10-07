@@ -7,8 +7,8 @@ use OAT\Library\Lti1p3Core\Tool\Tool;
 $tool = new Tool(
     '0CaWYNBvVaxAleO',               
     'MoodleAsProvider',
-    'http://127.0.0.1/moodle/enrol/lti/launch.php',
-    'http://127.0.0.1/moodle/enrol/lti/login.php?id=06c4ccff21ec19a74ec998be722afbd67ed6195141440272f2928e624e16',
-    'http://127.0.0.1/moodle/enrol/lti/launch.php',
-    'http://127.0.0.1/moodle/enrol/lti/launch_deeplink.php'
+    'http://localhost/moodle/enrol/lti/launch.php',
+    'http://localhost/enrol/lti/login.php?id=813f76410c82c343572c4e38b672698c38c55181af9d13a2796859991039',
+    'http://localhost/moodle/enrol/lti/launch.php',
+    'http://localhost/moodle/enrol/lti/launch_deeplink.php'
 );

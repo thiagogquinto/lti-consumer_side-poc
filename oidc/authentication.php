@@ -12,12 +12,13 @@ use Nyholm\Psr7\ServerRequest;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../registrationRepository.php';
 require_once __DIR__ . '/../userAuthenticator.php';
+require_once __DIR__ . '/../utils.php';
 
 try {
     /** @var RegistrationRepositoryInterface $registrationRepository */
-    $registrationRepository = new RegistrationRepository();
+    $registrationRepository = getRegistrationRepository();
     $registration = $registrationRepository->find('registro-moodle-local-01');
-    
+
     if ($registration === null) {
         throw new \Exception('Registration not found: registro-moodle-local-01');
     }
@@ -26,26 +27,27 @@ try {
     $userAuthenticator = new UserAuthenticator();
 
     $psr17Factory = new Psr17Factory();
-    
+
     /** @var ServerRequestInterface $request */
     $request = $psr17Factory->createServerRequest(
         $_SERVER['REQUEST_METHOD'] ?? 'GET',
         $_SERVER['REQUEST_URI'] ?? '/',
         $_SERVER
     );
-    
+
     if (!empty($_GET)) {
         $request = $request->withQueryParams($_GET);
     }
-    
+
     if (!empty($_POST)) {
         $request = $request->withParsedBody($_POST);
     }
 
     $queryParams = $request->getQueryParams();
     $requiredParams = ['iss', 'login_hint', 'target_link_uri'];
-    
+
     foreach ($requiredParams as $param) {
+        print_r($queryParams);
         if (empty($queryParams[$param])) {
             throw new \Exception("Missing required OIDC parameter: {$param}");
         }
@@ -59,7 +61,7 @@ try {
 
     // Auto redirection to the tool via the user's browser
     echo $message->toHtmlRedirectForm();
-    
+
 } catch (\Exception $e) {
     // Tratamento de erro básico
     http_response_code(400);

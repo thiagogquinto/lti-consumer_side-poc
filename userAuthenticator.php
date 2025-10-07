@@ -21,15 +21,60 @@ class SessionUserIdentity implements UserIdentityInterface
     {
         return $this->identifier;
     }
+
+    public function getName(): ?string
+    {
+        return "UsuÃ¡rio Mockado";
+    }
+
+    public function getEmail(): ?string
+    {
+        return null;
+    }
+
+    public function getGivenName(): ?string
+    {
+        return null;
+    }
+
+    public function getFamilyName(): ?string
+    {
+        return null;
+    }
+
+    public function getMiddleName(): ?string
+    {
+        return null;
+    }
+
+    public function getLocale(): ?string
+    {
+        return null;
+    }
+
+    public function getPicture(): ?string
+    {
+        return null;
+    }
+
+    public function getAdditionalProperties(): \OAT\Library\Lti1p3Core\Util\Collection\CollectionInterface
+    {
+        // TODO: Implement getAdditionalProperties() method.
+    }
+
+    public function normalize(): array
+    {
+        // TODO: Implement normalize() method.
+    }
 }
 
-$userAuthenticator = new class implements UserAuthenticatorInterface
+class UserAuthenticator implements UserAuthenticatorInterface
 {
     public function authenticate(
         RegistrationInterface $registration,
         string $loginHint
     ): UserAuthenticationResultInterface {
-        
+
         if (isset($_SESSION['user_id'])) {
             $userIdentity = new SessionUserIdentity($_SESSION['user_id']);
 

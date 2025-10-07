@@ -11,10 +11,10 @@ $clientId = '0CaWYNBvVaxAIeO';
 $deploymentId = '1';
 
 $registration = new Registration(
-    'registro-moodle-local-01',  // Identificador interno para este registro
-    $clientId,                   // Client ID do pop-up
-    $platform,                   // O objeto $platform do Passo 2
-    $tool,                       // O objeto $tool do Passo 1
-    [$deploymentId],             // Deployment ID do pop-up (como um array)
-    $keyChain
+    'registro-moodle-local-01',
+    $clientId,
+    $platform,
+    $tool,
+    [$deploymentId],
+    $keyChain,
 );
