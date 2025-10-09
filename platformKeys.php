@@ -7,15 +7,15 @@ use OAT\Library\Lti1p3Core\Security\Key\KeyChainFactory;
 use OAT\Library\Lti1p3Core\Security\Key\KeyInterface;
 use OAT\Library\Lti1p3Core\Security\Key\KeyChainRepository;
 
-$keyChain = (new KeyChainFactory)->create(
+$platformKeyChain = (new KeyChainFactory)->create(
     '1',                                // [required] identifier (used for JWT kid header)
     'myPlatformKeys',                   // [required] key set name (for grouping)
-    'file://home/user/.ssh/id_rsa.pub', // [required] public key (file or content)
-    'file://home/user/.ssh/id_rsa',     // [optional] private key (file or content)
+    'file://' . __DIR__ . '/jwks/keys/lti.pub',         // [required] path to public key file (PEM)
+    'file://' . __DIR__ . '/jwks/keys/lti',      // [optional] path to private key file (PEM, PKCS#1 or PKCS#8)
     KeyInterface::ALG_RS256            // [optional] algorithm (default: RS256)
 );
 
 $keyChainRepository = new KeyChainRepository();
-$keyChainRepository->addKeyChain($keyChain);
+$keyChainRepository->addKeyChain($platformKeyChain);
 
 return $keyChainRepository;

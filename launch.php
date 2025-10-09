@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/registrationRepository.php';
+require_once __DIR__ . '/RegistrationRepository.php';
 require_once __DIR__ . '/utils.php';
 
 use OAT\Library\Lti1p3Core\Message\Launch\Builder\PlatformOriginatingLaunchBuilder;
@@ -23,7 +23,7 @@ if ($registration === null) {
 $message = $builder->buildPlatformOriginatingLaunch(
     $registration,
     LtiMessageInterface::LTI_MESSAGE_TYPE_RESOURCE_LINK_REQUEST,
-    'http://localhost/moodle/enrol/lti/launch.php',
+    'http://localhost/enrol/lti/launch.php',
     'loginHint',
     null,
     [
@@ -36,4 +36,13 @@ $message = $builder->buildPlatformOriginatingLaunch(
 );
 
 
-echo $message->toHtmlRedirectForm();   // HTML hidden form, with possibility of auto redirection 
+
+$variavel = $message->toHtmlRedirectForm();
+
+// echo $message->toHtmlRedirectForm();
+
+// error_log('OIDC Authentication process completed successfully.');
+error_log($variavel);
+echo $variavel;
+
+// echo $message->toHtmlRedirectForm();   // HTML hidden form, with possibility of auto redirection 

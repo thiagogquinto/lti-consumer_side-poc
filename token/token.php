@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../registrationRepository.php';
+require_once __DIR__ . '/../RegistrationRepository.php';
 require_once __DIR__ . '/../utils.php';
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
@@ -11,16 +11,10 @@ use OAT\Library\Lti1p3Core\Security\Jwt\Validator\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
-/**
- * OAuth2 Token Endpoint para LTI 1.3
- * 
- * Este endpoint implementa o fluxo client_credentials do OAuth2
- * necessário para autenticação de ferramentas LTI
- */
-
 header('Content-Type: application/json');
 header('Cache-Control: no-store');
 header('Pragma: no-cache');
+
 
 try {
     // Verificar se é uma requisição POST

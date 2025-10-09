@@ -3,7 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/platform.php';
 require_once __DIR__ . '/tool.php';
-require_once __DIR__ . '/keys.php';
+require_once __DIR__ . '/platformKeys.php';
 
 use OAT\Library\Lti1p3Core\Registration\Registration;
 
@@ -16,5 +16,5 @@ $registration = new Registration(
     $platform,
     $tool,
     [$deploymentId],
-    $keyChain,
+    $platformKeyChain,
 );

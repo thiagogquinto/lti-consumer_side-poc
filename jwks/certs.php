@@ -1,6 +1,6 @@
 <?php
 
-$keyChainRepository = require_once __DIR__ . '/../keys.php';
+$keyChainRepository = require_once __DIR__ . '/../platformKeys.php';
 
 use OAT\Library\Lti1p3Core\Security\Jwks\Exporter\JwksExporter;
 use OAT\Library\Lti1p3Core\Security\Jwks\Server\JwksRequestHandler;
