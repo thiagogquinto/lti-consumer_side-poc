@@ -7,5 +7,5 @@ use OAT\Library\Lti1p3Core\Platform\Platform;
 $platform = new Platform(
     'Teste',
     'Consumer',
-    'http://localhost:9000',
+    'https://e0453dc34cc9.ngrok-free.app',
 );

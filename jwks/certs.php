@@ -1,5 +1,7 @@
 <?php
 
+error_log("Entrou no certs.php");
+
 $keyChainRepository = require_once __DIR__ . '/../platformKeys.php';
 
 use OAT\Library\Lti1p3Core\Security\Jwks\Exporter\JwksExporter;

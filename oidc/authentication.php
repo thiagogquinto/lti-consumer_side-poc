@@ -1,5 +1,7 @@
 <?php
 
+error_log("Entrou no authentication.php");
+
 session_start(); // Inicializar sessão para autenticação do usuário
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
@@ -52,6 +54,7 @@ try {
 
     // Auto redirection to the tool via the user's browser
     echo $message->toHtmlRedirectForm();
+    # exibir redirect link
 } catch (\Exception $e) {
     // Tratamento de erro básico
     http_response_code(400);

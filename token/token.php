@@ -15,7 +15,6 @@ header('Content-Type: application/json');
 header('Cache-Control: no-store');
 header('Pragma: no-cache');
 
-
 try {
     // Verificar se é uma requisição POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
