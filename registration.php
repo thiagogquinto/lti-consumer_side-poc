@@ -1,8 +1,8 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/platform.php';
-require_once __DIR__ . '/tool.php';
+require_once __DIR__ . '/platforms/sinepe.php';
+require_once __DIR__ . '/tools/moodle.php';
 require_once __DIR__ . '/platformKeys.php';
 
 use OAT\Library\Lti1p3Core\Registration\Registration;

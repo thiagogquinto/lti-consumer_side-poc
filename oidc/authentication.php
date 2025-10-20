@@ -1,7 +1,5 @@
 <?php
 
-error_log("Entrou no authentication.php");
-
 session_start(); // Inicializar sessão para autenticação do usuário
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
@@ -12,8 +10,8 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\ServerRequest;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../RegistrationRepository.php';
-require_once __DIR__ . '/../UserAuthenticator.php';
+require_once __DIR__ . '/../Interfaces/RegistrationRepository.php';
+require_once __DIR__ . '/../Interfaces/UserAuthenticator.php';
 require_once __DIR__ . '/../utils.php';
 
 try {
@@ -26,12 +24,10 @@ try {
         throw new \Exception('Registration not found: registro-moodle-local-01');
     }
 
-    /** @var UserAuthenticatorInterface $userAuthenticator */
     $userAuthenticator = new UserAuthenticator();
 
     $psr17Factory = new Psr17Factory();
 
-    /** @var ServerRequestInterface $request */
     $request = $psr17Factory->createServerRequest(
         $_SERVER['REQUEST_METHOD'] ?? 'GET',
         $_SERVER['REQUEST_URI'] ?? '/',
@@ -54,7 +50,6 @@ try {
 
     // Auto redirection to the tool via the user's browser
     echo $message->toHtmlRedirectForm();
-    # exibir redirect link
 } catch (\Exception $e) {
     // Tratamento de erro básico
     http_response_code(400);

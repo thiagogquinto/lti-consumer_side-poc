@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../RegistrationRepository.php';
+require_once __DIR__ . '/../Interfaces/RegistrationRepository.php';
 require_once __DIR__ . '/../utils.php';
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;

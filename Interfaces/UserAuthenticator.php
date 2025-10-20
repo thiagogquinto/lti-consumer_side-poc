@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Security\User\UserAuthenticatorInterface;
@@ -20,16 +20,3 @@ class UserAuthenticator implements UserAuthenticatorInterface
        );   
    }
 }
-
-// $userAuthenticator = new class implements UserAuthenticatorInterface
-// {
-//    public function authenticate(
-//        RegistrationInterface $registration,
-//        string $loginHint
-//    ): UserAuthenticationResultInterface {
-//         return new UserAuthenticationResult(
-//            true,                                          // success
-//            new UserIdentity('userIdentifier', 'userName') // authenticated user identity
-//        );   
-//    }
-// };
